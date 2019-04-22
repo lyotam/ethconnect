@@ -73,10 +73,10 @@ func (tx *Txn) sendUnsignedTxn(ctx context.Context, rpc RPCClient) (string, erro
 		Value:    hexutil.Big(*tx.EthTX.Value()),
 		Data:     &data,
 	}
-	// if tx.PrivateFrom != "" {
-	// 	args.PrivateFrom = tx.PrivateFrom
-	// 	args.PrivateFor = tx.PrivateFor
-	// }
+	if tx.PrivateFor == nil {
+		args.PrivateFrom = tx.PrivateFrom
+		args.PrivateFor = tx.PrivateFor
+	}
 	var to = tx.EthTX.To()
 	if to != nil {
 		args.To = to.Hex()

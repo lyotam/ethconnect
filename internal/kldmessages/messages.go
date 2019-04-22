@@ -100,6 +100,11 @@ type transactionCommon struct {
 	Gas        json.Number   `json:"gas"`
 	GasPrice   json.Number   `json:"gasPrice"`
 	Parameters []interface{} `json:"params"`
+
+	//Quorum
+	PrivateFrom string   `json:"privateFrom,omitempty"`
+	PrivateFor  []string `json:"privateFor,omitempty"`
+	//PrivateTxType	string			`json:"restriction"`
 }
 
 // SendTransaction message instructs the bridge to install a contract

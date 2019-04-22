@@ -41,6 +41,11 @@ type Txn struct {
 	EthTX           *types.Transaction
 	Hash            string
 	Receipt         TxnReceipt
+
+	//Quorum
+	PrivateFrom string
+	PrivateFor  []string
+	//End-Quorum
 }
 
 // TxnReceipt is the receipt obtained over JSON/RPC from the ethereum client
@@ -88,6 +93,9 @@ func NewContractDeployTxn(msg *kldmessages.DeployContract) (pTX *Txn, err error)
 
 	// Generate the ethereum transaction
 	err = pTX.genEthTransaction(msg.From, "", msg.Nonce, msg.Value, msg.Gas, msg.GasPrice, data)
+
+	// Generate the quorum private parameters
+	err = pTX.genPrivateParams(msg.PrivateFrom, msg.PrivateFor)
 	return
 }
 
@@ -133,6 +141,9 @@ func NewSendTxn(msg *kldmessages.SendTransaction) (pTX *Txn, err error) {
 
 	// Generate the ethereum transaction
 	err = pTX.genEthTransaction(msg.From, msg.To, msg.Nonce, msg.Value, msg.Gas, msg.GasPrice, packedCall)
+
+	// Generate the quorum private parameters
+	err = pTX.genPrivateParams(msg.PrivateFrom, msg.PrivateFor)
 	return
 }
 
@@ -215,6 +226,12 @@ func (tx *Txn) genEthTransaction(msgFrom, msgTo string, msgNonce, msgValue, msgG
 	etx := tx.EthTX
 	log.Debugf("TX:%s From='%s' To='%s' Nonce=%d Value=%d Gas=%d GasPrice=%d",
 		etx.Hash().Hex(), tx.From.Hex(), toStr, etx.Nonce(), etx.Value(), etx.Gas(), etx.GasPrice())
+	return
+}
+
+func (tx *Txn) genPrivateParams(msgPrivateFrom string, msgPrivateFor []string) (err error) {
+	tx.PrivateFrom = msgPrivateFrom
+	tx.PrivateFor = msgPrivateFor
 	return
 }
 
