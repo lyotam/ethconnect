@@ -73,7 +73,7 @@ func (tx *Txn) sendUnsignedTxn(ctx context.Context, rpc RPCClient) (string, erro
 		Value:    hexutil.Big(*tx.EthTX.Value()),
 		Data:     &data,
 	}
-	if tx.PrivateFor == nil {
+	if tx.PrivateFor != nil {
 		args.PrivateFrom = tx.PrivateFrom
 		args.PrivateFor = tx.PrivateFor
 	}
@@ -82,6 +82,6 @@ func (tx *Txn) sendUnsignedTxn(ctx context.Context, rpc RPCClient) (string, erro
 		args.To = to.Hex()
 	}
 	var txHash string
-	err := rpc.CallContext(ctx, &txHash, "eth_sendTransaction", args)
+	err := rpc.CallContext(ctx, &txHash, "eth_sendTransactionAsync", args)
 	return txHash, err
 }

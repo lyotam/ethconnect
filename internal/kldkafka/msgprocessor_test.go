@@ -75,7 +75,7 @@ var goodSendTxnJSON = "{" +
 
 func (r *testRPC) CallContext(ctx context.Context, result interface{}, method string, args ...interface{}) error {
 	r.calls = append(r.calls, method)
-	if method == "eth_sendTransaction" {
+	if method == "eth_sendTransactionAsync" {
 		reflect.ValueOf(result).Elem().Set(reflect.ValueOf(r.ethSendTransactionResult))
 		return r.ethSendTransactionErr
 	} else if method == "eth_getTransactionCount" {
@@ -192,7 +192,7 @@ func TestOnDeployContractMessageGoodTxnErrOnReceipt(t *testing.T) {
 	txnWG.Wait()
 	assert.Equal(1, len(testMsgContext.errorRepies))
 
-	assert.Equal("eth_sendTransaction", testRPC.calls[0])
+	assert.Equal("eth_sendTransactionAsync", testRPC.calls[0])
 	assert.Equal("eth_getTransactionReceipt", testRPC.calls[1])
 
 	assert.Regexp("Error obtaining transaction receipt", testMsgContext.errorRepies[0].err.Error())
@@ -245,7 +245,7 @@ func TestOnDeployContractMessageGoodTxnMined(t *testing.T) {
 	txnWG.Wait()
 	assert.Equal(0, len(testMsgContext.errorRepies))
 
-	assert.Equal("eth_sendTransaction", testRPC.calls[0])
+	assert.Equal("eth_sendTransactionAsync", testRPC.calls[0])
 	assert.Equal("eth_getTransactionReceipt", testRPC.calls[1])
 
 	replyMsg := testMsgContext.replies[0]
@@ -307,7 +307,7 @@ func TestOnDeployContractMessageFailedTxn(t *testing.T) {
 	msgProcessor.OnMessage(testMsgContext)
 
 	assert.Equal("fizzle", testMsgContext.errorRepies[0].err.Error())
-	assert.EqualValues([]string{"eth_sendTransaction"}, testRPC.calls)
+	assert.EqualValues([]string{"eth_sendTransactionAsync"}, testRPC.calls)
 }
 
 func TestOnDeployContractMessageFailedToGetNonce(t *testing.T) {
@@ -419,7 +419,7 @@ func TestOnSendTransactionMessageTxnTimeout(t *testing.T) {
 	txnWG.Wait()
 	assert.Equal(1, len(testMsgContext.errorRepies))
 
-	assert.Equal("eth_sendTransaction", testRPC.calls[0])
+	assert.Equal("eth_sendTransactionAsync", testRPC.calls[0])
 	assert.Equal("eth_getTransactionReceipt", testRPC.calls[1])
 
 	assert.Regexp("Timed out waiting for transaction receipt", testMsgContext.errorRepies[0].err.Error())
@@ -441,7 +441,7 @@ func TestOnSendTransactionMessageFailedTxn(t *testing.T) {
 	msgProcessor.OnMessage(testMsgContext)
 
 	assert.Equal("pop", testMsgContext.errorRepies[0].err.Error())
-	assert.EqualValues([]string{"eth_sendTransaction"}, testRPC.calls)
+	assert.EqualValues([]string{"eth_sendTransactionAsync"}, testRPC.calls)
 }
 
 func TestOnSendTransactionMessageFailedToGetNonce(t *testing.T) {
@@ -486,5 +486,5 @@ func TestOnSendTransactionMessageInflightNonce(t *testing.T) {
 	msgProcessor.OnMessage(testMsgContext)
 
 	assert.Empty(testMsgContext.errorRepies)
-	assert.EqualValues([]string{"eth_sendTransaction"}, testRPC.calls)
+	assert.EqualValues([]string{"eth_sendTransactionAsync"}, testRPC.calls)
 }
