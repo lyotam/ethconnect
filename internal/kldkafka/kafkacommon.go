@@ -27,7 +27,7 @@ import (
 	"github.com/Shopify/sarama"
 	cluster "github.com/bsm/sarama-cluster"
 	"github.com/ethereum/go-ethereum/rpc"
-	"github.com/kaleido-io/ethconnect/internal/kldutils"
+	"github.com/lyotam/ethconnect-quorum/internal/kldutils"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

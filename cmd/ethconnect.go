@@ -24,9 +24,9 @@ import (
 	"gopkg.in/yaml.v2"
 
 	"github.com/icza/dyno"
-	"github.com/kaleido-io/ethconnect/internal/kldkafka"
-	"github.com/kaleido-io/ethconnect/internal/kldutils"
-	"github.com/kaleido-io/ethconnect/internal/kldwebhooks"
+	"github.com/lyotam/ethconnect-quorum/internal/kldkafka"
+	"github.com/lyotam/ethconnect-quorum/internal/kldutils"
+	"github.com/lyotam/ethconnect-quorum/internal/kldwebhooks"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

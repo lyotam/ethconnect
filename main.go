@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kaleido-io/ethconnect/cmd"
+	"github.com/lyotam/ethconnect-quorum/cmd"
 )
 
 var buildDate, buildVersion string // Set by ldflags

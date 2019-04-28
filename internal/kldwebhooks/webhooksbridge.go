@@ -31,9 +31,9 @@ import (
 	"github.com/Shopify/sarama"
 	"github.com/icza/dyno"
 	"github.com/julienschmidt/httprouter"
-	"github.com/kaleido-io/ethconnect/internal/kldkafka"
-	"github.com/kaleido-io/ethconnect/internal/kldmessages"
-	"github.com/kaleido-io/ethconnect/internal/kldutils"
+	"github.com/lyotam/ethconnect-quorum/internal/kldkafka"
+	"github.com/lyotam/ethconnect-quorum/internal/kldmessages"
+	"github.com/lyotam/ethconnect-quorum/internal/kldutils"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

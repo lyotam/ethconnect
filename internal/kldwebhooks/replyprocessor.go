@@ -26,8 +26,8 @@ import (
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"
 	"github.com/julienschmidt/httprouter"
-	"github.com/kaleido-io/ethconnect/internal/kldkafka"
-	"github.com/kaleido-io/ethconnect/internal/kldmessages"
+	"github.com/lyotam/ethconnect-quorum/internal/kldkafka"
+	"github.com/lyotam/ethconnect-quorum/internal/kldmessages"
 	log "github.com/sirupsen/logrus"
 )
 

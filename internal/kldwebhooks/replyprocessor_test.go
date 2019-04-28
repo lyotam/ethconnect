@@ -27,9 +27,9 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/kaleido-io/ethconnect/internal/kldkafka"
-	"github.com/kaleido-io/ethconnect/internal/kldmessages"
-	"github.com/kaleido-io/ethconnect/internal/kldutils"
+	"github.com/lyotam/ethconnect-quorum/internal/kldkafka"
+	"github.com/lyotam/ethconnect-quorum/internal/kldmessages"
+	"github.com/lyotam/ethconnect-quorum/internal/kldutils"
 )
 
 type mockMongo struct {

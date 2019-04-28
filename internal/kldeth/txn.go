@@ -26,8 +26,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
 
-	"github.com/kaleido-io/ethconnect/internal/kldmessages"
-	"github.com/kaleido-io/ethconnect/internal/kldutils"
+	"github.com/lyotam/ethconnect-quorum/internal/kldmessages"
+	"github.com/lyotam/ethconnect-quorum/internal/kldutils"
 
 	"github.com/ethereum/go-ethereum/core/types"
 	log "github.com/sirupsen/logrus"

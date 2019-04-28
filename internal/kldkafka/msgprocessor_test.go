@@ -27,8 +27,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/kaleido-io/ethconnect/internal/kldeth"
-	"github.com/kaleido-io/ethconnect/internal/kldmessages"
+	"github.com/lyotam/ethconnect-quorum/internal/kldeth"
+	"github.com/lyotam/ethconnect-quorum/internal/kldmessages"
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )

@@ -29,8 +29,8 @@ import (
 	"time"
 
 	"github.com/Shopify/sarama"
-	"github.com/kaleido-io/ethconnect/internal/kldkafka"
-	"github.com/kaleido-io/ethconnect/internal/kldmessages"
+	"github.com/lyotam/ethconnect-quorum/internal/kldkafka"
+	"github.com/lyotam/ethconnect-quorum/internal/kldmessages"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/assert"
